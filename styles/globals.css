@@ -1,0 +1,56 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply transition-colors duration-200;
+  }
+}
+
+@layer components {
+  .glass-morphism {
+    @apply bg-white/10 backdrop-filter backdrop-blur-lg border border-white/20 dark:border-gray-700/30;
+  }
+  
+  .glass-card {
+    @apply glass-morphism rounded-xl shadow-xl hover:shadow-2xl transition-all duration-300;
+  }
+
+  .todo-item {
+    @apply glass-card p-6 relative overflow-hidden;
+  }
+
+  .todo-item::before {
+    content: '';
+    @apply absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent opacity-0 transition-opacity duration-300;
+  }
+
+  .todo-item:hover::before {
+    @apply opacity-100;
+  }
+
+  .priority-high {
+    @apply border-l-4 border-red-500;
+  }
+
+  .priority-medium {
+    @apply border-l-4 border-yellow-500;
+  }
+
+  .priority-low {
+    @apply border-l-4 border-green-500;
+  }
+
+  .deadline-close {
+    @apply text-red-400 dark:text-red-300;
+  }
+
+  .deadline-approaching {
+    @apply text-yellow-400 dark:text-yellow-300;
+  }
+
+  .deadline-safe {
+    @apply text-green-400 dark:text-green-300;
+  }
+}
